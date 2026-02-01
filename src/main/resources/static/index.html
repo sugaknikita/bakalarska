@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Odovzdanie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+      <a href="#calculating" onclick="scrollToSection(0); return false;">Calculating</a>
+      <a href="#about" onclick="scrollToSection(1); return false;" class="active">About</a>
+      <a href="#news" onclick="scrollToSection(2); return false;" >News</a>
+    </nav>
+    
+    <div class="main-container" id="container">
+    
+    <div class="section" id="calculating">
+      <div class="popup-buttons">
+        <button id="bookmark-btn"><img src="bookmark.svg" alt=""></button>
+        <button id="contact-btn"><img src="contact.svg" alt=""></button>
+        <button id="info-btn"><img src="info.svg" alt=""></button>
+      </div>
+     
+      <div class="buttons">
+      <button class="my-btn active" onclick="showTable(1, this)"><img src="settings.svg" alt=""></button>
+      <button class="my-btn" onclick="showTable(2, this)"><img src="weather.svg" alt=""></button>
+      <button class="my-btn" onclick="showTable(3, this)"><img src="cable.svg" alt=""></button>
+      </div>
+      
+      <div class="table-content" id="table1">
+        <h3>Data & Preferences</h3>
+        <div class="row">
+          <h4>Temperature:</h4>
+            <input type="number" name="temperature" value="60">
+        </div>
+
+          <div class="row">
+              <h4>Action:</h4>
+              <button onclick="sendCalculationRequest()" style="width: 80px;">Calc</button>
+          </div>
+        
+        <div class="row">
+          <h4>Default:</h4>
+          <button class="close" id="resetBtn">Reset</button>
+        </div>
+        
+        <div class="footer">
+            <h2>Total ampacity:</h2>
+            <h1 id="resultOutput">---</h1>
+        </div>
+          
+        
+      </div>
+      
+      <div class="table-content" id="table2"  style="display: none;">
+        <h3>Meteodata & Weather</h3>
+          <div class="row">
+              <h4>Air Temp (°C):</h4>
+              <input type="number" id="t_a" value="35">
+          </div>
+        
+        <div class="row">
+          <h4>Wind (m/s):</h4>
+          <input type="number" id="wind_speed" value="0.5">
+        </div>
+        
+        <div class="row">
+          <h4>Angle (°):</h4>
+          <input type="number" id="wind_angle" value="45">
+        </div>
+        
+        <div class="row">
+          <h4>Solar (W/m²):</h4>
+          <input type="number" id="i_t0" value="1000">
+        </div>
+        
+        <div class="row">
+          <h4>Elevation (m):</h4>
+          <input type="number" id="y" value="208">
+        </div>
+        
+        <h2>Total ampacity:</h2>
+        <h1>25 kW</h1>
+      </div>
+      
+      <div class="table-content" id="table3"  style="display: none;">
+        <h3>Cable Configuration</h3>
+          <div class="row">
+              <h4>Material:</h4>
+              <select id="conductorSelector" onchange="updateCableInfo()" style="width: 140px;">
+                  <option value="ACSR_243">ACSR 243</option>
+                  <option value="ACSS_FLICKER">ACSS Flicker</option>
+                  <option value="ACCC_LISBON">ACCC Lisbon</option>
+              </select>
+          </div>
+
+          <div class="row">
+              <h4>Diameter:</h4>
+              <input type="text" id="info_diameter" readonly style="background:none; border:none; text-align:right; color:white;">
+          </div>
+
+          <div class="row">
+              <h4>Max Temp:</h4>
+              <input type="text" id="info_maxtemp" readonly style="background:none; border:none; text-align:right; color:white;">
+          </div>
+
+          <div class="row">
+              <h4>Resistance:</h4>
+              <input type="text" id="info_rdc" readonly style="background:none; border:none; text-align:right; color:white; width: 80px;">
+          </div>
+
+          <div class="footer">
+              <h2>Cable selected:</h2>
+              <h1 id="cableStatus">OK</h1>
+          </div>
+      </div>
+      
+      
+      <div class="status-bar">
+        <div class="status-item">
+          <h3>Current standart: CIGRE 601</h3>
+        </div>
+        <div class="status-item">
+          <h3>Current statement: OK</h3>
+        </div>
+        <div class="status-item">
+          <h3>Curent weather rate: RISKY</h3>
+        </div>
+        <div class="status-item">
+          <h3>Specific preferences: NONE</h3>
+        </div>
+      </div>
+    </div>
+    
+  <div class="section section-about" id="about">
+    <div class="about-scroll">
+    <div class="about-bg"></div>
+    
+    <div class="about-scroll">
+    <h1 class="h1">Overheating ends here.</h1>
+    
+    <div class="info">
+      <div class="text left">
+        <h3>Over 5 000 power line headings was optimised, using our ampacity calculator</h3>
+      </div>
+      
+      <div class="svg-container"><img src="Power%20line%20heading.svg" alt=""></div>
+      
+      <div class="text right">
+        <h3>Over 600+ technical university students was aaplied to the intership</h3>
+      </div>
+    </div>
+      
+      <div class="learn-more"><h3>Learn more</h3></div>
+  <div class="footer">
+   
+    <h2 class="h2">Explore the leading ampacity calculating software</h2>
+  </div>
+    
+    
+    <section class="page-section section-1">
+      <h1 class="h1">From students to students</h1>
+      <div class="info">
+        <div class="text left s1">
+          <h3>Our software compares with the most popular standart like CIGRE 601</h3>
+        </div>
+        
+        <div class="text right s1">
+          <h3>Software was developed by a TUKE students according to the one of the most important publication in this sphere</h3>
+        </div>
+        
+      </div>
+      <div class="text spec">
+        <h3>A user-friendly interface designed for both web and desktop access</h3>
+      </div>
+    </section>
+      
+      <section class="page-section section-2">
+        <h1 class="s">Pure statistics</h1>
+        
+        <div class="stats__rows">
+          <div class="stats-row">
+            <div class="stats-row__value">50+</div>
+            <div class="stats-row__text">Parameters to calculate</div>
+          </div>
+          
+          <div class="stats-row">
+            <div class="stats-row__value">40%</div>
+            <div class="stats-row__text">Average heating reduces</div>
+          </div>
+          
+          <div class="stats-row">
+            <div class="stats-row__value">30+</div>
+            <div class="stats-row__text">
+              Power lines was saved from<br>
+              overheating disaster
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    <section class="page-section section-3">
+      <h1 class="s3">Thanks for your interest!</h1>
+      
+      <div class="text right s1">
+          <h3 class="thanks_text">
+            You can start calculating<br>
+            <a href="#calculating" onclick="scrollToSection(0); return false;" class="thankslink">here</a>
+          </h3>
+      </div>
+      
+      <div class="text right s1">
+          <h3 class="thanks_text">
+            Also you can read the publication<br>
+            of main investigators
+            <a href="#" class="thankslink">here</a>
+          </h3>
+      </div>
+      
+      <p>
+        Developed as university project according to F.Margita &amp; L.Bena publication
+        “Determination of the ampacity of overhead lines in the conditions of the Slovak
+        Republic's electricity system”
+      </p>
+    </section>
+    </div>
+    </div>
+  </div>
+    
+    <div class="section" id="news">
+    </div>
+    
+  </div>
+    
+    <div id="bookmark" class="popup">
+      <div class="popup-content">
+        <h3>Saved presets</h3>
+        
+        <div class="row">
+          <h4>Preset 1: 02/05/2023</h4>
+          <button>Load</button>
+        </div>
+        
+        <div class="row">
+          <h4>Myyyyy: 03/03/2025</h4>
+          <button>Load</button>
+        </div>
+        
+        <div class="row">
+          <h4>Letna 9 vodic: 02/04/2024</h4>
+          <button>Load</button>
+        </div>
+        <button class="close" id="close b">Close</button>
+      </div>
+    </div>
+    
+    <div id="contact" class="popup">
+      <div class="popup-content">
+        <h3>Contacts</h3>
+        <p>Phone: +421 123 456 789</p>
+        <p>Email: info@ampacity.sk</p>
+        <button class="close" id="close c">Close</button>
+      </div>
+    </div>
+    
+    <div id="info" class="popup">
+      <div class="popup-content">
+        <h3>Info</h3>
+        <p>Ampacity Calculator v1.0</p>
+        <p>Standarts: CIGRE 601</p>
+        <p>Read the documentation: nolink.com</p>
+        <button class="close" id="close i">Close</button>
+      </div>
+    </div>
+    
+    
+    <script>
+        let currentSection = 1;
+
+        function scrollToSection(index) {
+            currentSection = index;
+            const container = document.getElementById('container');
+            const offset = -index * 100;
+            container.style.transform = `translateX(${offset}vw)`;
+
+            document.querySelectorAll('nav a').forEach((link, i) => {
+                link.classList.toggle('active', i === index);
+            });
+        }
+    </script>
+    
+    <script>
+        function showTable(num, btn) {
+            document.querySelectorAll('.table-content').forEach(table => {
+                table.style.display = 'none';
+            });
+
+            document.getElementById('table' + num).style.display = 'block';
+
+            document.querySelectorAll('.my-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            btn.classList.add('active');
+        }
+      </script>
+
+      <script>
+        const b_btn = document.getElementById('bookmark-btn');
+        const b_pop = document.getElementById('bookmark');
+        const b_cls = document.getElementById('close b');
+        
+        const c_btn = document.getElementById('contact-btn');
+        const c_pop = document.getElementById('contact');
+        const c_cls = document.getElementById('close c');
+        
+        const i_btn = document.getElementById('info-btn');
+        const i_pop = document.getElementById('info');
+        const i_cls = document.getElementById('close i');
+        
+        b_btn.addEventListener('click', () => {
+            b_pop.classList.add('open');
+        });
+        b_cls.addEventListener('click', () => {
+            b_pop.classList.remove('open');
+        })
+
+
+        c_btn.addEventListener('click', () => {
+            c_pop.classList.add('open');
+        });
+        c_cls.addEventListener('click', () => {
+            c_pop.classList.remove('open');
+        })
+        
+        
+        i_btn.addEventListener('click', () => {
+            i_pop.classList.add('open');
+        });
+        i_cls.addEventListener('click', () => {
+            i_pop.classList.remove('open');
+        })
+      </script>
+    
+    <script>
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            const container = document.getElementById('table1');
+            const container2 = document.getElementById('table2');
+            const container3 = document.getElementById('table3');
+            
+            
+            container.querySelectorAll('input').forEach(input => {input.value = '';});
+            container2.querySelectorAll('input').forEach(input => {input.value = '';});
+            container3.querySelectorAll('input').forEach(input => {input.value = '';});
+        });
+    </script>
+
+    <script>
+        const cableInfoDB = {
+            'ACSR_243': { d: '21.75 mm', t: '80 °C', r: '0.118 mΩ' },
+            'ACSS_FLICKER': { d: '21.49 mm', t: '250 °C', r: '0.114 mΩ' },
+            'ACCC_LISBON': { d: '21.79 mm', t: '200 °C', r: '0.089 mΩ' }
+        };
+
+        function updateCableInfo() {
+            const selected = document.getElementById('conductorSelector').value;
+            const info = cableInfoDB[selected];
+            if (info) {
+                document.getElementById('info_diameter').value = info.d;
+                document.getElementById('info_maxtemp').value = info.t;
+                document.getElementById('info_rdc').value = info.r;
+            }
+        }
+        updateCableInfo();
+
+        async function sendCalculationRequest() {
+            const envData = {
+                t_a: parseFloat(document.getElementById('t_a').value),
+                wind_speed: parseFloat(document.getElementById('wind_speed').value),
+                wind_angle_of_attack: parseFloat(document.getElementById('wind_angle').value),
+                i_t0: parseFloat(document.getElementById('i_t0').value),
+                y: parseFloat(document.getElementById('y').value)
+            };
+
+            const requestBody = {
+                selection: document.getElementById('conductorSelector').value,
+                enviroment: envData
+            };
+
+            try {
+                const response = await fetch('/api/calculate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    alert("Server error: " + response.status);
+                    return;
+                }
+
+                const data = await response.json();
+
+                const resultElement = document.getElementById('resultOutput');
+                resultElement.innerText = data.slr.toFixed(2) + " A";
+                resultElement.style.color = "#17b36a";
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Connection error!");
+            }
+        }
+    </script>
+
+
+</body>
+</html>
