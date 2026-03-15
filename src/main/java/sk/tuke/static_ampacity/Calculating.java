@@ -33,7 +33,7 @@ public class Calculating {
         // moje conštanty pre vypočtu
         double D_m = con.getOutDiameter() * 1e-3;
         double d_m = con.getStrandDiameter() * 1e-3;
-        double Ts = con.getT_s();
+        double Ts = env.getT_s();
         double Ta = env.getT_a();
         double wind_speed = env.getWind_speed();
         double wind_angle = env.getWind_angle_of_attack();
