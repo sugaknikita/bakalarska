@@ -120,6 +120,7 @@ h4 {
     flex-direction: column;
     flex: 1 1 300px;
     max-width: 400px;
+    min-height: 450px;
     padding-bottom: 20px;
     background: var(--color-bg);
     border: 5px solid var(--color-secondary);
@@ -287,6 +288,7 @@ select {
 .gauge-panel {
     flex: 1 1 250px;
     max-width: 350px;
+    min-height: 450px;
     border: 5px solid var(--color-secondary);
     background: var(--color-bg);
     display: flex;
