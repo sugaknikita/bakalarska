@@ -67,7 +67,8 @@ h4 {
     padding: 20px;
     gap: 20px;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
+    align-content: flex-start;
     position: relative;
     min-height: 100vh;
 }
@@ -268,7 +269,8 @@ select {
 
 .status-item {
     display: flex;
-    flex: 1 1 200px;
+    flex: 1 1 auto;
+    max-width: 300px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -377,10 +379,27 @@ select {
 }
 
 @media (max-width: 768px) {
-    .section#calculating { padding: 10px; gap: 10px; }
-    .page-title { margin-top: 40px; }
-    .buttons { gap: 10px; }
-    .my-btn { width: 50px; height: 50px; }
+    .section#calculating {
+        padding: 10px; gap: 10px;
+    }
+    .page-title {
+        margin-top: 40px;
+    }
+    .buttons {
+        gap: 10px;
+    }
+    .my-btn {
+        width: 50px; height: 50px;
+    }
+
+    .table-content { order: 1; flex: 1 1 100%; max-width: none; }
+    .chart-panel {
+        order: 2;
+        flex: 1 1 100%;
+        min-height: 200px;
+        max-height: 250px;
+    }
+    .gauge-panel { order: 3; flex: 1 1 100%; max-width: none; }
 
     .table-content, .gauge-panel, .chart-panel {
         border-width: 3px;
@@ -389,10 +408,15 @@ select {
     .status-bar {
         border-width: 3px;
         padding: 10px;
-        gap: 10px;
+        gap: 8px;
     }
     .status-item {
         flex: 1 1 100%;
-        padding: 10px;
+        max-width: none;
+        padding: 8px;
+        font-size: 14px;
+    }
+    .status-item h3 {
+        font-size: 14px;
     }
 }
