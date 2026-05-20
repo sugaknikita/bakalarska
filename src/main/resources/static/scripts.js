@@ -60,10 +60,14 @@
     document.getElementById('close-i').addEventListener('click', () => document.getElementById('info').classList.remove('open'));
 
     document.getElementById('resetBtn').addEventListener('click', () => {
-    ['table1', 'table2', 'table3'].forEach(id => {
-        document.getElementById(id).querySelectorAll('input').forEach(input => input.value = '');
-    });
-});
+        document.getElementById('t_s').value = 80;
+        document.getElementById('t_a').value = 35;
+        document.getElementById('wind_speed').value = 0.5;
+        document.getElementById('wind_angle').value = 45;
+        document.getElementById('i_t0').value = 1000;
+        document.getElementById('y').value = 300;
+        updateCableInfo();
+ });
 
     const cableInfoDB = {
         'ACSR_243':              { d: '21.75 mm', t: '80 °C',  r: '0.118 mΩ'  },
