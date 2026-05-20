@@ -164,12 +164,6 @@
 
          const data = await response.json();
 
-         if (data.slr === 0) {
-             document.getElementById('resultOutput').innerText = "Raise temp!";
-             document.getElementById('resultOutput').style.color = "#FF4242";
-             return;
-         }
-
          const el = document.getElementById('resultOutput');
          el.innerText = data.slr.toFixed(2) + " A";
          el.style.color = "#17b36a";
