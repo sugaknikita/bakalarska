@@ -14,10 +14,52 @@ public class Calculating {
     private static final Map<String, Conductor> CATALOG = new HashMap<>();
 
     static {
+        CATALOG.put("ACSR_243",          new Conductor("ACSR 243",           21.0,  3.50, 1.20e-4,  4.03e-3, 90));
+        CATALOG.put("ACSS_FLICKER",      new Conductor("ACSS Flicker",       22.0,  3.60, 1.30e-4,  4.03e-3, 200));
+        CATALOG.put("ACCC_LISBON",       new Conductor("ACCC Lisbon",        21.8,  3.40, 1.10e-4,  4.03e-3, 180));
 
-        CATALOG.put("ACSR_243", new Conductor("ACSR 243-AL1/39-ST1A", 21.0, 3.5, 0.00012,4e-3, 90));
-        CATALOG.put("ACSS_FLICKER", new Conductor("ACSS Flicker 242", 22.0, 3.6, 0.00013,4e-3, 200));
-        CATALOG.put("ACCC_LISBON", new Conductor("ACCC Lisbon 250", 21.8, 3.4, 0.00011,4.03e-3, 180));
+        CATALOG.put("122-AL1/20-ST1A",   new Conductor("122-AL1/20-ST1A",   15.5,  2.44, 2.376e-4, 4.03e-3, 80));
+        CATALOG.put("119-AL1/42-ST1A",   new Conductor("119-AL1/42-ST1A",   16.5,  2.05, 2.435e-4, 4.03e-3, 80));
+        CATALOG.put("122-AL1/71-ST1A",   new Conductor("122-AL1/71-ST1A",   18.0,  3.60, 2.364e-4, 4.03e-3, 80));
+        CATALOG.put("183-AL1/43-ST1A",   new Conductor("183-AL1/43-ST1A",   19.5,  2.79, 1.576e-4, 4.03e-3, 80));
+        CATALOG.put("184-AL1/30-ST1A",   new Conductor("184-AL1/30-ST1A",   19.0,  3.00, 1.571e-4, 4.03e-3, 80));
+        CATALOG.put("212-AL1/49-ST1A",   new Conductor("212-AL1/49-ST1A",   21.0,  3.00, 1.363e-4, 4.03e-3, 80));
+        CATALOG.put("243-AL1/39-ST1A",   new Conductor("243-AL1/39-ST1A",   21.8,  3.45, 1.188e-4, 4.03e-3, 80));
+        CATALOG.put("352-AL1/59-ST1A",   new Conductor("352-AL1/59-ST1A",   26.5,  4.00, 8.21e-5,  4.03e-3, 80));
+        CATALOG.put("362-AL1/59-ST1A",   new Conductor("362-AL1/59-ST1A",   26.7,  4.21, 7.98e-5,  4.03e-3, 80));
+        CATALOG.put("382-AL1/49-ST1A",   new Conductor("382-AL1/49-ST1A",   27.0,  3.00, 7.58e-5,  4.03e-3, 80));
+        CATALOG.put("430-AL1/100-ST1A",  new Conductor("430-AL1/100-ST1A",  22.9,  4.27, 6.73e-5,  4.03e-3, 80));
+        CATALOG.put("434-AL1/56-ST1A",   new Conductor("434-AL1/56-ST1A",   28.8,  3.20, 6.66e-5,  4.03e-3, 80));
+        CATALOG.put("490-AL1/64-ST1A",   new Conductor("490-AL1/64-ST1A",   30.6,  3.40, 5.90e-5,  4.03e-3, 80));
+        CATALOG.put("565-AL1/72-ST1A",   new Conductor("565-AL1/72-ST1A",   32.9,  3.65, 5.12e-5,  4.03e-3, 80));
+        CATALOG.put("679-AL1/86-ST1A",   new Conductor("679-AL1/86-ST1A",   36.0,  4.00, 4.26e-5,  4.03e-3, 80));
+        CATALOG.put("758-AL1/43-ST1A",   new Conductor("758-AL1/43-ST1A",   36.5,  4.12, 3.82e-5,  4.03e-3, 80));
+
+        CATALOG.put("185-AL1/43-ST6C",   new Conductor("185-AL1/43-ST6C",   19.6,  2.80, 1.565e-4, 4.03e-3, 80));
+        CATALOG.put("326-AL1/86-ST6C",   new Conductor("326-AL1/86-ST6C",   26.4,  3.60, 8.89e-5,  4.03e-3, 80));
+        CATALOG.put("362-AL1/59-ST6C",   new Conductor("362-AL1/59-ST6C",   26.7,  4.21, 7.98e-5,  4.03e-3, 80));
+        CATALOG.put("490-AL1/64-ST6C",   new Conductor("490-AL1/64-ST6C",   30.6,  3.40, 5.90e-5,  4.03e-3, 80));
+
+        CATALOG.put("185-AL4/43-ST6C",   new Conductor("185-AL4/43-ST6C",   19.6,  2.80, 1.805e-4, 3.60e-3, 80));
+        CATALOG.put("234-AL4/55-ST6C",   new Conductor("234-AL4/55-ST6C",   22.1,  3.15, 1.426e-4, 3.60e-3, 80));
+
+        CATALOG.put("66-A20SA",          new Conductor("66-A20SA",          10.5,  2.10, 1.3102e-3,4.03e-3, 80));
+        CATALOG.put("93-A20SA",          new Conductor("93-A20SA",          12.5,  2.50, 9.245e-4, 4.03e-3, 80));
+
+        CATALOG.put("24-AL1/4-ST1A",     new Conductor("24-AL1/4-ST1A",    6.72,  2.24, 1.212e-3, 4.03e-3, 80));
+        CATALOG.put("37-AL1/6-ST1A",     new Conductor("37-AL1/6-ST1A",    8.40,  2.80, 7.757e-4, 4.03e-3, 80));
+        CATALOG.put("47-AL1/8-ST1A",     new Conductor("47-AL1/8-ST1A",    9.45,  3.15, 6.129e-4, 4.03e-3, 80));
+        CATALOG.put("66-AL1/11-ST1A",    new Conductor("66-AL1/11-ST1A",   11.4,  1.80, 4.365e-4, 4.03e-3, 80));
+        CATALOG.put("92-AL1/16-ST1A",    new Conductor("92-AL1/16-ST1A",   13.58, 2.12, 3.147e-4, 4.03e-3, 80));
+        CATALOG.put("128-AL1/22-ST1A",   new Conductor("128-AL1/22-ST1A",  16.0,  2.50, 2.263e-4, 4.03e-3, 80));
+
+        CATALOG.put("42-AL1/7-ST1A",     new Conductor("42-AL1/7-ST1A",    9.00,  3.00, 6.757e-4, 4.03e-3, 80));
+        CATALOG.put("42-AL1/25-ST1A",    new Conductor("42-AL1/25-ST1A",   10.6,  2.12, 6.817e-4, 4.03e-3, 80));
+        CATALOG.put("72-AL1/11-ST1A",    new Conductor("72-AL1/11-ST1A",   12.0,  1.95, 4.028e-4, 4.03e-3, 80));
+        CATALOG.put("AlFe 70/11-1",      new Conductor("AlFe 70/11-1",     11.7,  3.75, 4.332e-4, 4.03e-3, 80));
+        CATALOG.put("100-AL1/25-ST1A",   new Conductor("100-AL1/25-ST1A",  14.6,  2.06, 2.891e-4, 4.03e-3, 80));
+        CATALOG.put("110-AL1/22-ST1A",   new Conductor("110-AL1/22-ST1A",  14.96, 2.24, 2.618e-4, 4.03e-3, 80));
+        CATALOG.put("143-AL1/25-ST1A",   new Conductor("143-AL1/25-ST1A",  16.96, 2.65, 2.014e-4, 4.03e-3, 80));
     }
 
     public double processRequest(Request request) {
@@ -42,7 +84,7 @@ public class Calculating {
         double Ps = con.getAbsorptivity() * env.getI_t0() * D_m;
 
         // Teplota filmu vzduchu v kontakte s povrchom / Temperature of air film in contact with surface [°C]
-        double Tf = 0.5 * (con.getT_s() + env.getT_a());
+        double Tf = 0.5 * (Ts + Ta);
 
         // Tepelná vodivosť vzduchu / Thermal conductivity of air [W/(m*K)]
         double lambda_f = 2.368e-2 + 7.23e-5 * Tf - 2.763e-8 * Math.pow(Tf, 2);
@@ -146,7 +188,7 @@ public class Calculating {
         double P_c_nat = Math.PI * lambda_f * (Ts - Ta) * N_mi_beta;
 
         // Konv. tepelná strata / Convective heat loss [W/m]
-        if (wind_speed > 0.5) {
+        if (wind_speed >= 0.5) {
             Pc = Pc_forced;
         } else {
             Pc = P_c_nat;

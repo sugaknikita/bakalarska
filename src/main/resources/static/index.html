@@ -69,7 +69,7 @@
             </div>
             <div class="row">
                 <h4>Elevation (m):</h4>
-                <input type="number" id="y" value="208">
+                <input type="number" id="y" value="300">
             </div>
         </div>
         
@@ -79,9 +79,60 @@
             <div class="row">
                 <h4>Material:</h4>
                 <select id="conductorSelector" onchange="updateCableInfo()" style="width: 140px;">
-                    <option value="ACSR_243">ACSR 243</option>
-                    <option value="ACSS_FLICKER">ACSS Flicker</option>
-                    <option value="ACCC_LISBON">ACCC Lisbon</option>
+                    <optgroup label="ACSR / ACSS / ACCC">
+                        <option value="ACSR_243">ACSR 243</option>
+                        <option value="ACSS_FLICKER">ACSS Flicker</option>
+                        <option value="ACCC_LISBON">ACCC Lisbon</option>
+                    </optgroup>
+                    <optgroup label="AL1/ST1A (>45 kV)">
+                        <option value="122-AL1/20-ST1A">122-AL1/20-ST1A</option>
+                        <option value="119-AL1/42-ST1A">119-AL1/42-ST1A</option>
+                        <option value="122-AL1/71-ST1A">122-AL1/71-ST1A</option>
+                        <option value="183-AL1/43-ST1A">183-AL1/43-ST1A</option>
+                        <option value="184-AL1/30-ST1A">184-AL1/30-ST1A</option>
+                        <option value="212-AL1/49-ST1A">212-AL1/49-ST1A</option>
+                        <option value="243-AL1/39-ST1A">243-AL1/39-ST1A</option>
+                        <option value="352-AL1/59-ST1A">352-AL1/59-ST1A</option>
+                        <option value="362-AL1/59-ST1A">362-AL1/59-ST1A</option>
+                        <option value="382-AL1/49-ST1A">382-AL1/49-ST1A</option>
+                        <option value="430-AL1/100-ST1A">430-AL1/100-ST1A</option>
+                        <option value="434-AL1/56-ST1A">434-AL1/56-ST1A</option>
+                        <option value="490-AL1/64-ST1A">490-AL1/64-ST1A</option>
+                        <option value="565-AL1/72-ST1A">565-AL1/72-ST1A</option>
+                        <option value="679-AL1/86-ST1A">679-AL1/86-ST1A</option>
+                        <option value="758-AL1/43-ST1A">758-AL1/43-ST1A</option>
+                    </optgroup>
+                    <optgroup label="AL1/ST6C (>45 kV)">
+                        <option value="185-AL1/43-ST6C">185-AL1/43-ST6C</option>
+                        <option value="326-AL1/86-ST6C">326-AL1/86-ST6C</option>
+                        <option value="362-AL1/59-ST6C">362-AL1/59-ST6C</option>
+                        <option value="490-AL1/64-ST6C">490-AL1/64-ST6C</option>
+                    </optgroup>
+                    <optgroup label="AL4/ST6C (>45 kV)">
+                        <option value="185-AL4/43-ST6C">185-AL4/43-ST6C</option>
+                        <option value="234-AL4/55-ST6C">234-AL4/55-ST6C</option>
+                    </optgroup>
+                    <optgroup label="A20SA (>45 kV)">
+                        <option value="66-A20SA">66-A20SA</option>
+                        <option value="93-A20SA">93-A20SA</option>
+                    </optgroup>
+                    <optgroup label="AL1/ST1A (<45 kV) — ČSN 02 4010">
+                        <option value="24-AL1/4-ST1A">24-AL1/4-ST1A</option>
+                        <option value="37-AL1/6-ST1A">37-AL1/6-ST1A</option>
+                        <option value="47-AL1/8-ST1A">47-AL1/8-ST1A</option>
+                        <option value="66-AL1/11-ST1A">66-AL1/11-ST1A</option>
+                        <option value="92-AL1/16-ST1A">92-AL1/16-ST1A</option>
+                        <option value="128-AL1/22-ST1A">128-AL1/22-ST1A</option>
+                    </optgroup>
+                    <optgroup label="AL1/ST1A (<45 kV) — PN ZSNP">
+                        <option value="42-AL1/7-ST1A">42-AL1/7-ST1A</option>
+                        <option value="42-AL1/25-ST1A">42-AL1/25-ST1A</option>
+                        <option value="72-AL1/11-ST1A">72-AL1/11-ST1A</option>
+                        <option value="AlFe 70/11-1">AlFe 70/11-1</option>
+                        <option value="100-AL1/25-ST1A">100-AL1/25-ST1A</option>
+                        <option value="110-AL1/22-ST1A">110-AL1/22-ST1A</option>
+                        <option value="143-AL1/25-ST1A">143-AL1/25-ST1A</option>
+                    </optgroup>
                 </select>
             </div>
             <div class="row">

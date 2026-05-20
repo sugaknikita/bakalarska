@@ -66,17 +66,62 @@
 });
 
     const cableInfoDB = {
-    'ACSR_243':     { d: '21.75 mm', t: '80 °C',  r: '0.118 mΩ' },
-    'ACSS_FLICKER': { d: '21.49 mm', t: '250 °C', r: '0.114 mΩ' },
-    'ACCC_LISBON':  { d: '21.79 mm', t: '200 °C', r: '0.089 mΩ' }
+        'ACSR_243':              { d: '21.75 mm', t: '80 °C',  r: '0.118 mΩ'  },
+        'ACSS_FLICKER':          { d: '21.49 mm', t: '250 °C', r: '0.114 mΩ'  },
+        'ACCC_LISBON':           { d: '21.79 mm', t: '200 °C', r: '0.089 mΩ'  },
+
+        '122-AL1/20-ST1A':       { d: '15.50 mm', t: '80 °C',  r: '0.2376 mΩ' },
+        '119-AL1/42-ST1A':       { d: '16.50 mm', t: '80 °C',  r: '0.2435 mΩ' },
+        '122-AL1/71-ST1A':       { d: '18.00 mm', t: '80 °C',  r: '0.2364 mΩ' },
+        '183-AL1/43-ST1A':       { d: '19.50 mm', t: '80 °C',  r: '0.1576 mΩ' },
+        '184-AL1/30-ST1A':       { d: '19.00 mm', t: '80 °C',  r: '0.1571 mΩ' },
+        '212-AL1/49-ST1A':       { d: '21.00 mm', t: '80 °C',  r: '0.1363 mΩ' },
+        '243-AL1/39-ST1A':       { d: '21.80 mm', t: '80 °C',  r: '0.1188 mΩ' },
+        '352-AL1/59-ST1A':       { d: '26.50 mm', t: '80 °C',  r: '0.0821 mΩ' },
+        '362-AL1/59-ST1A':       { d: '26.70 mm', t: '80 °C',  r: '0.0798 mΩ' },
+        '382-AL1/49-ST1A':       { d: '27.00 mm', t: '80 °C',  r: '0.0758 mΩ' },
+        '430-AL1/100-ST1A':      { d: '22.90 mm', t: '80 °C',  r: '0.0673 mΩ' },
+        '434-AL1/56-ST1A':       { d: '28.80 mm', t: '80 °C',  r: '0.0666 mΩ' },
+        '490-AL1/64-ST1A':       { d: '30.60 mm', t: '80 °C',  r: '0.0590 mΩ' },
+        '565-AL1/72-ST1A':       { d: '32.90 mm', t: '80 °C',  r: '0.0512 mΩ' },
+        '679-AL1/86-ST1A':       { d: '36.00 mm', t: '80 °C',  r: '0.0426 mΩ' },
+        '758-AL1/43-ST1A':       { d: '36.50 mm', t: '80 °C',  r: '0.0382 mΩ' },
+
+        '185-AL1/43-ST6C':       { d: '19.60 mm', t: '80 °C',  r: '0.1565 mΩ' },
+        '326-AL1/86-ST6C':       { d: '26.40 mm', t: '80 °C',  r: '0.0889 mΩ' },
+        '362-AL1/59-ST6C':       { d: '26.70 mm', t: '80 °C',  r: '0.0798 mΩ' },
+        '490-AL1/64-ST6C':       { d: '30.60 mm', t: '80 °C',  r: '0.0590 mΩ' },
+
+        '185-AL4/43-ST6C':       { d: '19.60 mm', t: '80 °C',  r: '0.1805 mΩ' },
+        '234-AL4/55-ST6C':       { d: '22.10 mm', t: '80 °C',  r: '0.1426 mΩ' },
+
+        '66-A20SA':              { d: '10.50 mm', t: '80 °C',  r: '1.3102 mΩ' },
+        '93-A20SA':              { d: '12.50 mm', t: '80 °C',  r: '0.9245 mΩ' },
+
+        '24-AL1/4-ST1A':         { d: '6.72 mm',  t: '80 °C',  r: '1.2120 mΩ' },
+        '37-AL1/6-ST1A':         { d: '8.40 mm',  t: '80 °C',  r: '0.7757 mΩ' },
+        '47-AL1/8-ST1A':         { d: '9.45 mm',  t: '80 °C',  r: '0.6129 mΩ' },
+        '66-AL1/11-ST1A':        { d: '11.40 mm', t: '80 °C',  r: '0.4365 mΩ' },
+        '92-AL1/16-ST1A':        { d: '13.58 mm', t: '80 °C',  r: '0.3147 mΩ' },
+        '128-AL1/22-ST1A':       { d: '16.00 mm', t: '80 °C',  r: '0.2263 mΩ' },
+
+        '42-AL1/7-ST1A':         { d: '9.00 mm',  t: '80 °C',  r: '0.6757 mΩ' },
+        '42-AL1/25-ST1A':        { d: '10.60 mm', t: '80 °C',  r: '0.6817 mΩ' },
+        '72-AL1/11-ST1A':        { d: '12.00 mm', t: '80 °C',  r: '0.4028 mΩ' },
+        'AlFe 70/11-1':          { d: '11.70 mm', t: '80 °C',  r: '0.4332 mΩ' },
+        '100-AL1/25-ST1A':       { d: '14.60 mm', t: '80 °C',  r: '0.2891 mΩ' },
+        '110-AL1/22-ST1A':       { d: '14.96 mm', t: '80 °C',  r: '0.2618 mΩ' },
+        '143-AL1/25-ST1A':       { d: '16.96 mm', t: '80 °C',  r: '0.2014 mΩ' },
 };
 
     function updateCableInfo() {
     const info = cableInfoDB[document.getElementById('conductorSelector').value];
     if (info) {
     document.getElementById('info_diameter').value = info.d;
-    document.getElementById('info_maxtemp').value  = info.t;
-    document.getElementById('info_rdc').value      = info.r;
+    document.getElementById('info_maxtemp').value = info.t;
+    document.getElementById('info_rdc').value = info.r;
+
+    document.getElementById('t_s').value = parseFloat(info.t);
 }
 }
     updateCableInfo();
