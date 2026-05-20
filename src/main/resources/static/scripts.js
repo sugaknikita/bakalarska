@@ -5,8 +5,8 @@
     document.getElementById('chartEmpty').style.display = 'none';
 
     const svg = document.getElementById('historyChart');
-    const W = svg.clientWidth;
-    const H = svg.clientHeight;
+    const W = svg.getBoundingClientRect().width || svg.parentElement.clientWidth - 40;
+    const H = svg.getBoundingClientRect().height || 200;
 
     const padLeft = 55;
     const padBottom = 30;
@@ -127,37 +127,56 @@
     updateCableInfo();
 
     async function sendCalculationRequest() {
-    const requestBody = {
-    selection: document.getElementById('conductorSelector').value,
-    enviroment: {
-    t_s: parseFloat(document.getElementById('t_s').value),
-    t_a: parseFloat(document.getElementById('t_a').value),
-    wind_speed: parseFloat(document.getElementById('wind_speed').value),
-    wind_angle_of_attack: parseFloat(document.getElementById('wind_angle').value),
-    i_t0: parseFloat(document.getElementById('i_t0').value),
-    y: parseFloat(document.getElementById('y').value)
-}
-};
+     const t_s = parseFloat(document.getElementById('t_s').value);
+     const t_a = parseFloat(document.getElementById('t_a').value);
+     const wind_speed = parseFloat(document.getElementById('wind_speed').value);
+     const wind_angle = parseFloat(document.getElementById('wind_angle').value);
+     const i_t0 = parseFloat(document.getElementById('i_t0').value);
+     const y = parseFloat(document.getElementById('y').value);
 
-    try {
-    const response = await fetch('/api/calculate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestBody)
-});
+     if ([t_s, t_a, wind_speed, wind_angle, i_t0, y].some(isNaN)) {
+         document.getElementById('resultOutput').innerText = "Fill all fields!";
+         document.getElementById('resultOutput').style.color = "#FF4242";
+         return;
+     }
 
-    if (!response.ok) { alert("Server error: " + response.status); return; }
+     const requestBody = {
+         selection: document.getElementById('conductorSelector').value,
+         enviroment: { t_s, t_a, wind_speed, wind_angle_of_attack: wind_angle, i_t0, y }
+     };
 
-    const data = await response.json();
-    const el = document.getElementById('resultOutput');
-    el.innerText = data.slr.toFixed(2) + " A";
-    el.style.color = "#17b36a";
-    updateChart(data.slr);
-} catch (e) {
-    console.error(e);
-    alert("Connection error!");
-}
-}
+     try {
+         const response = await fetch('/api/calculate', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(requestBody)
+         });
+
+         if (!response.ok) {
+             document.getElementById('resultOutput').innerText = "Fill all fields!";
+             document.getElementById('resultOutput').style.color = "#FF4242";
+             return;
+         }
+
+         const data = await response.json();
+
+         if (data.slr === 0) {
+             document.getElementById('resultOutput').innerText = "Raise temp!";
+             document.getElementById('resultOutput').style.color = "#FF4242";
+             return;
+         }
+
+         const el = document.getElementById('resultOutput');
+         el.innerText = data.slr.toFixed(2) + " A";
+         el.style.color = "#17b36a";
+         updateChart(data.slr);
+
+     } catch (e) {
+         console.error(e);
+         document.getElementById('resultOutput').innerText = "Connection error!";
+         document.getElementById('resultOutput').style.color = "#FF4242";
+     }
+ }
 
     const presets = [];
 

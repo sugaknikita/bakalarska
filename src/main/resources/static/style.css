@@ -67,7 +67,7 @@ h4 {
     padding: 20px;
     gap: 20px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     align-content: flex-start;
     position: relative;
     min-height: 100vh;
@@ -370,6 +370,7 @@ select {
     align-items: center;
     padding: 20px;
     min-height: 400px;
+    max-height: 500px;
 }
 
 @media (max-width: 1100px) {

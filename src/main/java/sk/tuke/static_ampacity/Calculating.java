@@ -72,6 +72,12 @@ public class Calculating {
 
     public double calculateAmpacity(Conductor con, Enviroment env) {
 
+        if (env.getT_s() == null || env.getT_a() == null ||
+                env.getWind_speed() == null || env.getWind_angle_of_attack() == null ||
+                env.getI_t0() == null || env.getY() == null) {
+            return 0.0;
+        }
+
         // moje conštanty pre vypočtu
         double D_m = con.getOutDiameter() * 1e-3;
         double d_m = con.getStrandDiameter() * 1e-3;
