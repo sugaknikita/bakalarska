@@ -28,7 +28,7 @@ const translations = {
         saves: 'Saves',
         saveCurrent: 'Save current',
         history: 'History',
-        pressCalc: 'Press Calc to start',
+        pressCalc: 'Calculate 2 times to reveal chart',
         info: 'Info',
         infoStandards: 'Standards: CIGRE 601',
         documentation: 'Read the documentation: nolink.com',
@@ -63,7 +63,7 @@ const translations = {
         saves: 'Uložené',
         saveCurrent: 'Uložiť aktuálne',
         history: 'História',
-        pressCalc: 'Stlačte Calc pre začiatok',
+        pressCalc: 'Vypočítajte dvakrát, aby sa zobrazil graf',
         info: 'Informácie',
         infoStandards: 'Normy: CIGRE 601',
         documentation: 'Prečítať dokumentáciu: nolink.com',
@@ -216,9 +216,9 @@ const history = [];
     document.getElementById('info_rdc').value = info.r;
     document.getElementById('info_temp_conf').value = info.a;
     document.getElementById('t_s').value = parseFloat(info.t);
+
 }
 }
-    updateCableInfo();
 
     async function sendCalculationRequest() {
      const t_s = parseFloat(document.getElementById('t_s').value);
@@ -250,7 +250,7 @@ const history = [];
          });
 
          if (!response.ok) {
-             document.getElementById('resultOutput').innerText = "Error! Check all fields and max temperature";
+             document.getElementById('resultOutput').innerText = "Error! Check max. temp!";
              document.getElementById('resultOutput').style.color = "#FF4242";
              return;
          }
@@ -319,3 +319,4 @@ const history = [];
 
  renderPresets();
  setLanguage(currentLang);
+ updateCableInfo();
