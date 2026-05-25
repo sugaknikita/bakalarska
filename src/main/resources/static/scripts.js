@@ -1,4 +1,91 @@
- const history = [];
+const translations = {
+    en: {
+        title: 'Static Ampacity Calculator',
+        tab1: 'Data & Preferences',
+        temperature: 'Temperature:',
+        action: 'Action:',
+        calc: 'Calculate',
+        toDefault: 'To default:',
+        reset: 'Reset',
+        totalAmpacity: 'Total ampacity:',
+        tab2: 'Meteodata & Weather',
+        airTemp: 'Air Temp (°C):',
+        wind: 'Wind (m/s):',
+        angle: 'Angle (°):',
+        solar: 'Solar (W/m²):',
+        elevation: 'Elevation (m):',
+        tab3: 'Cable Configuration',
+        material: 'Material:',
+        diameter: 'Diameter:',
+        outDiameter: 'Out diameter:',
+        maxTemp: 'Max Temp:',
+        tempCoef: 'Temperature coefficient:',
+        resistance: 'Resistance (20°C):',
+        surface: 'Surface Properties',
+        emissivity: 'Emissivity:',
+        absorptivity: 'Absorptivity:',
+        cableSelected: 'Cable selected:',
+        saves: 'Saves',
+        saveCurrent: 'Save current',
+        history: 'History',
+        pressCalc: 'Press Calc to start',
+        info: 'Info',
+        infoStandards: 'Standards: CIGRE 601',
+        documentation: 'Read the documentation: nolink.com',
+        close: 'Close',
+    },
+    sk: {
+        title: 'Kalkulátor statickej ampacity',
+        tab1: 'Dáta & Nastavenia',
+        temperature: 'Teplota:',
+        action: 'Akcia:',
+        calc: 'Vypočítať',
+        toDefault: 'Predvolené:',
+        reset: 'Reset',
+        totalAmpacity: 'Celková ampacita:',
+        tab2: 'Meteodata & Počasie',
+        airTemp: 'Teplota vzduchu (°C):',
+        wind: 'Vietor (m/s):',
+        angle: 'Uhol (°):',
+        solar: 'Slnečné žiar. (W/m²):',
+        elevation: 'Nadmorská výška (m):',
+        tab3: 'Konfigurácia kábla',
+        material: 'Materiál:',
+        diameter: 'Priemer:',
+        outDiameter: 'Vonkajší priemer:',
+        maxTemp: 'Max. teplota:',
+        tempCoef: 'Teplotný koeficient:',
+        resistance: 'Odpor (20°C):',
+        surface: 'Vlastnosti povrchu',
+        emissivity: 'Emisivita:',
+        absorptivity: 'Absorptivita:',
+        cableSelected: 'Vybraný kábel:',
+        saves: 'Uložené',
+        saveCurrent: 'Uložiť aktuálne',
+        history: 'História',
+        pressCalc: 'Stlačte Calc pre začiatok',
+        info: 'Informácie',
+        infoStandards: 'Normy: CIGRE 601',
+        documentation: 'Prečítať dokumentáciu: nolink.com',
+        close: 'Zavrieť',
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+}
+
+const history = [];
 
     function updateChart(value) {
     history.push(value);
@@ -66,6 +153,8 @@
         document.getElementById('wind_angle').value = 45;
         document.getElementById('i_t0').value = 1000;
         document.getElementById('y').value = 300;
+        document.getElementById('emissivity').value = 0.5;
+        document.getElementById('absorptivity').value = 0.5;
         updateCableInfo();
  });
 
@@ -227,3 +316,6 @@
      localStorage.setItem('ampacity_presets', JSON.stringify(presets));
      renderPresets();
  }
+
+ renderPresets();
+ setLanguage(currentLang);

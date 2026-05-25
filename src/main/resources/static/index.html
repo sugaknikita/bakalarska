@@ -13,10 +13,12 @@
 
 <div class="main-container">
     <div class="section" id="calculating">
-        <h2 class="page-title">Static Ampacity Calculator</h2>
+        <h2 class="page-title" data-i18n="title">Static Ampacity Calculator</h2>
         
         <div class="popup-buttons">
             <button id="info-btn"><img src="svg_info.svg" alt=""></button>
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="sk" onclick="setLanguage('sk')">SK</button>
         </div>
 
         <div class="buttons">
@@ -26,59 +28,59 @@
         </div>
 
         <div class="table-content" id="table1">
-            <h3>Data & Preferences</h3>
+            <h3 data-i18n="tab1">Data & Preferences</h3>
 
             <div class="row">
-                <h4>Temperature:</h4>
+                <h4 data-i18n="temperature">Temperature:</h4>
                 <input type="number" id="t_s" value="60">
             </div>
 
             <div class="row">
-                <h4>Action:</h4>
-                <button onclick="sendCalculationRequest()" style="width: 80px;">Calc</button>
+                <h4 data-i18n="action">Action:</h4>
+                <button onclick="sendCalculationRequest()" data-i18n="calc" style="width: 160px;">Calculate</button>
             </div>
 
             <div class="row">
-                <h4>Default:</h4>
-                <button class="close" id="resetBtn">Reset</button>
+                <h4 data-i18n="toDefault">To default:</h4>
+                <button class="close" id="resetBtn" data-i18n="reset" style="width: 160px;">Reset</button>
             </div>
 
             <div class="footer">
-                <h2>Total ampacity:</h2>
+                <h2 data-i18n="totalAmpacity">Total ampacity:</h2>
                 <h1 id="resultOutput">---</h1>
             </div>
         </div>
 
         <div class="table-content" id="table2" style="display: none;">
-            <h3>Meteodata & Weather</h3>
+            <h3 data-i18n="tab2">Meteodata & Weather</h3>
 
             <div class="row">
-                <h4>Air Temp (°C):</h4>
+                <h4 data-i18n="airTemp">Air Temp (°C):</h4>
                 <input type="number" id="t_a" value="35">
             </div>
             <div class="row">
-                <h4>Wind (m/s):</h4>
+                <h4 data-i18n="wind">Wind (m/s):</h4>
                 <input type="number" id="wind_speed" value="0.5">
             </div>
             <div class="row">
-                <h4>Angle (°):</h4>
+                <h4 data-i18n="angle">Angle (°):</h4>
                 <input type="number" id="wind_angle" value="45">
             </div>
             <div class="row">
-                <h4>Solar (W/m²):</h4>
+                <h4 data-i18n="solar">Solar (W/m²):</h4>
                 <input type="number" id="i_t0" value="1000">
             </div>
             <div class="row">
-                <h4>Elevation (m):</h4>
+                <h4 data-i18n="elevation">Elevation (m):</h4>
                 <input type="number" id="y" value="300">
             </div>
         </div>
         
         <div class="table-content" id="table3" style="display: none;">
-            <h3>Cable Configuration</h3>
+            <h3 data-i18n="tab3">Cable Configuration</h3>
 
             <div class="row">
-                <h4>Material:</h4>
+                <h4 data-i18n="material">Material:</h4>
                 <select id="conductorSelector" onchange="updateCableInfo()" style="width: 140px;">
                     <optgroup label="ACSR / ACSS / ACCC">
                         <option value="ACSR_243">ACSR 243</option>
@@ -137,56 +139,56 @@
                 </select>
             </div>
             <div class="row">
-                <h4>Diameter:</h4>
+                <h4 data-i18n="diameter">Diameter:</h4>
                 <input type="text" id="info_diameter" readonly style="background:none; border:none; text-align:right; color:white;">
             </div>
             <div class="row">
-                <h4>Out diameter:</h4>
+                <h4 data-i18n="outDiameter">Out diameter:</h4>
                 <input type="text" id="info_out_diameter" readonly style="background:none; border:none; text-align:right; color:white; width: 80px;">
             </div>
             <div class="row">
-                <h4>Max Temp:</h4>
+                <h4 data-i18n="maxTemp">Max Temp:</h4>
                 <input type="text" id="info_maxtemp" readonly style="background:none; border:none; text-align:right; color:white;">
             </div>
             <div class="row">
-                <h4>Temperature coefficient:</h4>
+                <h4 data-i18n="tempCoef">Temperature coefficient:</h4>
                 <input type="text" id="info_temp_conf" readonly style="background:none; border:none; text-align:right; color:white; width: 80px;">
             </div>
             <div class="row">
-                <h4>Resistance (20°C):</h4>
+                <h4 data-i18n="resistance">Resistance (20°C):</h4>
                 <input type="text" id="info_rdc" readonly style="background:none; border:none; text-align:right; color:white; width: 80px;">
             </div>
 
-            <h4>Surface Properties</h4>
+            <h4 data-i18n="surface">Surface Properties</h4>
             <div class="row">
-                <h4>Emissivity:</h4>
+                <h4 data-i18n="emissivity">Emissivity:</h4>
                 <input type="number" id="emissivity" value="0.5" min="0.1" max="1.0" step="0.01" style="width: 80px;">
             </div>
             <div class="row">
-                <h4>Absorptivity:</h4>
+                <h4 data-i18n="absorptivity">Absorptivity:</h4>
                 <input type="number" id="absorptivity" value="0.5" min="0.1" max="1.0" step="0.01" style="width: 80px;">
             </div>
 
             <div class="footer">
-                <h2>Cable selected:</h2>
+                <h2 data-i18n="cableSelected">Cable selected:</h2>
                 <h1 id="cableStatus">OK</h1>
             </div>
         </div>
 
         <div class="gauge-panel">
             <div class="presets">
-                <h3>Saves</h3>
+                <h3 data-i18n="saves">Saves</h3>
                 <div id="presetList" class="preset-list"></div>
-                <button class="preset-save-btn" onclick="savePreset()">Save current</button>
+                <button class="preset-save-btn" data-i18n="saveCurrent" onclick="savePreset()">Save current</button>
             </div>
         </div>
         
         <div class="chart-panel">
-            <h3>History</h3>
+            <h3 data-i18n="history">History</h3>
             <svg id="historyChart" width="100%" height="85%">
                 <polyline id="chartLine" points="" fill="none" stroke="#FF9E42" stroke-width="2"/>
             </svg>
-            <h4 id="chartEmpty" style="margin-top:40%">Press Calc to start</h4>
+            <h4 id="chartEmpty" data-i18n="pressCalc" style="margin-top:40%">Press Calc to start</h4>
         </div>
         
         <div class="status-bar">
@@ -201,11 +203,11 @@
 
 <div id="info" class="popup">
     <div class="popup-content">
-        <h3>Info</h3>
+        <h3 data-i18n="info">Info</h3>
         <p>Ampacity Calculator v1.0</p>
-        <p>Standarts: CIGRE 601</p>
-        <p>Read the documentation: nolink.com</p>
-        <button class="close" id="close-i">Close</button>
+        <p data-i18n="infoStandards">Standarts: CIGRE 601</p>
+        <p data-i18n="documentation">Read the documentation: nolink.com</p>
+        <button class="close" id="close-i" data-i18n="close">Close</button>
     </div>
 </div>
 <script src="scripts.js"></script>
