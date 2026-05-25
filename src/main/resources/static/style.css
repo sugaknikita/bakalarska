@@ -374,6 +374,26 @@ select {
     min-height: clamp(400px, 70vh, 700px);
 }
 
+.popup-buttons .lang-btn {
+    background: none;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    width: 33px;
+    height: 33px;
+    padding: 0;
+    font-family: 'Afacad', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.popup-buttons .lang-btn.active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
 @media (max-width: 1100px) {
     .chart-panel { flex: 1 1 100%; order: 3; }
     .gauge-panel { order: 2; flex: 1 1 300px; max-width: none; }
@@ -422,23 +442,4 @@ select {
         font-size: 14px;
     }
 
-    .popup-buttons .lang-btn {
-        background: none;
-        border: 2px solid var(--color-accent);
-        color: var(--color-accent);
-        width: 33px;
-        height: 33px;
-        padding: 0;
-        font-family: 'Afacad', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .popup-buttons .lang-btn.active {
-        background: var(--color-accent);
-        color: var(--color-bg);
-    }
 }
