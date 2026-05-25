@@ -8,9 +8,6 @@ public class Conductor {
     private double r_dc20;
     private double alfa;
 
-    private double emissivity = 0.5;
-    private double absorptivity = 0.5;
-
     public Conductor() {}
 
     public Conductor(String name, double outDiam, double strDiam, double rdc20, double alfa, double ts) {
@@ -36,12 +33,6 @@ public class Conductor {
 
     public double getAlpha() { return alfa; }
     public void setAlpha(double alpha) { this.alfa = alpha; }
-
-    public double getEmissivity() {return emissivity;}
-    public void setEmissivity(double emissivity) {this.emissivity = emissivity;}
-
-    public double getAbsorptivity() {return absorptivity;}
-    public void setAbsorptivity(double absorptivity) {this.absorptivity = absorptivity;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}

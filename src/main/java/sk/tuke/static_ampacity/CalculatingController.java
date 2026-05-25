@@ -3,6 +3,7 @@ package sk.tuke.static_ampacity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 import sk.tuke.static_ampacity.models.Request;
 import java.util.Collections;
 import java.util.Map;
@@ -17,8 +18,12 @@ public class CalculatingController {
     }
 
     @PostMapping("/api/calculate")
-    public Map<String, Double> calculate(@RequestBody Request request) {
-        double result = calculatingService.processRequest(request);
-        return Collections.singletonMap("slr", result);
+    public ResponseEntity<?> calculate(@RequestBody Request request) {
+        try {
+            double result = calculatingService.processRequest(request);
+            return ResponseEntity.ok(Collections.singletonMap("slr", result));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
     }
 }

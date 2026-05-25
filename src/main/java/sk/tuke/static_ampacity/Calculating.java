@@ -14,9 +14,9 @@ public class Calculating {
     private static final Map<String, Conductor> CATALOG = new HashMap<>();
 
     static {
-        CATALOG.put("ACSR_243",          new Conductor("ACSR 243",           21.0,  3.50, 1.20e-4,  4.03e-3, 90));
-        CATALOG.put("ACSS_FLICKER",      new Conductor("ACSS Flicker",       22.0,  3.60, 1.30e-4,  4.03e-3, 200));
-        CATALOG.put("ACCC_LISBON",       new Conductor("ACCC Lisbon",        21.8,  3.40, 1.10e-4,  4.03e-3, 180));
+        CATALOG.put("ACSR_243",          new Conductor("ACSR 243",           21.75,  3.45, 1.1181e-3,  4e-3, 80));
+        CATALOG.put("ACSS_FLICKER",      new Conductor("ACSS Flicker",       21.49,  3.58, 1.1142e-3,  4e-3, 250));
+        CATALOG.put("ACCC_LISBON",       new Conductor("ACCC Lisbon",        21.79,  3.67, 0.0887e-3,  4.03e-3, 200));
 
         CATALOG.put("122-AL1/20-ST1A",   new Conductor("122-AL1/20-ST1A",   15.5,  2.44, 2.376e-4, 4.03e-3, 80));
         CATALOG.put("119-AL1/42-ST1A",   new Conductor("119-AL1/42-ST1A",   16.5,  2.05, 2.435e-4, 4.03e-3, 80));
@@ -67,10 +67,10 @@ public class Calculating {
 
         if (conductor == null) throw new IllegalArgumentException("Unknown conductor type: " + request.getSelection());
 
-        return calculateAmpacity(conductor, request.getEnviroment());
+        return calculateAmpacity(conductor, request.getEnviroment(), request.getEmissivity(), request.getAbsorptivity());
     }
 
-    public double calculateAmpacity(Conductor con, Enviroment env) {
+    public double calculateAmpacity(Conductor con, Enviroment env, double emissivity, double absorptivity) {
 
         if (env.getT_s() == null || env.getT_a() == null ||
                 env.getWind_speed() == null || env.getWind_angle_of_attack() == null ||
@@ -82,12 +82,15 @@ public class Calculating {
         double D_m = con.getOutDiameter() * 1e-3;
         double d_m = con.getStrandDiameter() * 1e-3;
         double Ts = env.getT_s();
+        if (env.getT_s() > con.getT_s()) {
+            throw new IllegalArgumentException("T_s conductor max temperature!");
+        }
         double Ta = env.getT_a();
         double wind_speed = env.getWind_speed();
         double wind_angle = env.getWind_angle_of_attack();
 
         // Solárne žiarenie / Calculate solar heating [W/m]
-        double Ps = con.getAbsorptivity() * env.getI_t0() * D_m;
+        double Ps = absorptivity * env.getI_t0() * D_m;
 
         // Teplota filmu vzduchu v kontakte s povrchom / Temperature of air film in contact with surface [°C]
         double Tf = 0.5 * (Ts + Ta);
@@ -204,7 +207,7 @@ public class Calculating {
         double sigma_B = 5.6697e-8;
 
         // Radiatívne chladenie / Chladenie radiáciou [W/m]
-        double Pr_cool = Math.PI * D_m * sigma_B * con.getEmissivity() * (Math.pow(Ts + 273, 4) - Math.pow(Ta + 273, 4));
+        double Pr_cool = Math.PI * D_m * sigma_B * emissivity * (Math.pow(Ts + 273, 4) - Math.pow(Ta + 273, 4));
 
         // resistance at conductor temperature
         double Rac = con.getR_dc20() * (1 + con.getAlpha() * (Ts - 20));
