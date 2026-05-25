@@ -25,6 +25,13 @@ html, body {
     flex: 1;
     min-height: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.section#calculating {
+    flex: 1;
+    min-height: 0;
 }
 
 h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
@@ -69,16 +76,22 @@ h4 {
 }
 
 .section#calculating {
+    flex: 1;
+    min-height: 0;
+    max-height: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
     gap: 20px;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
     align-content: flex-start;
     position: relative;
     overflow: hidden;
-    min-height: 0;
+}
+
+.table-content, .chart-panel, .gauge-panel {
+    max-height: calc(100% - 160px);
 }
 
 .buttons {
