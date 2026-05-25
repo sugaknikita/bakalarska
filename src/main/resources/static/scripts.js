@@ -30,7 +30,7 @@ const translations = {
         history: 'History',
         pressCalc: 'Calculate 2 times to reveal chart',
         info: 'Info',
-        infoStandards: 'Standards: CIGRE 601',
+        infoStandards: 'Standarts: CIGRE 601',
         documentation: 'Read the documentation: nolink.com',
         close: 'Close',
     },

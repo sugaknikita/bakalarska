@@ -3,7 +3,7 @@ package sk.tuke.static_ampacity.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Request {
-    @JsonProperty("enviroment")
+    @JsonProperty("environment")
     public Enviroment weather;
 
     @JsonProperty("selection")
